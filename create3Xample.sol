@@ -36,9 +36,9 @@ contract Deployer {
   }
 
 
-  /// @notice confirms that an address was created by this contract providing a salt
-  function confirmChildContract(address _childContractToVerify, string memory salt_string) public view returns(bool){
-    bytes32 salt = keccak256(bytes(salt_string));
+  /// @notice confirms that an address was created by this contract providing a salt,
+  function confirmChildContract(address _childContractToVerify, string memory saltString) public view returns(bool){
+    bytes32 salt = keccak256(bytes(saltString));
     address _child = Create3.addressOf(salt);
     require(_childContractToVerify == _child, "provided child not created by this contract");
     return true;
